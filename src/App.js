@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css';
+import Berlangsung from './pages/Berlangsung';
+import Tambah from './pages/Tambah';
+import { useEffect, useState } from 'react';
+import Celengan from './pages/Celengan';
+import Selesai from './pages/Selesai';
 
 function App() {
+
+  const getCelengan = () => {
+    let celengan = JSON.parse(localStorage.getItem("celenganku") || "[]")
+    if (celengan) {
+      return celengan
+    }
+    return []
+  }
+  const [celengans, setCelengans] = useState(getCelengan())
+  useEffect(() => {
+    localStorage.setItem("celenganku", JSON.stringify(celengans))
+  }, [celengans])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-gray-800 min-h-screen">
+      <Router>
+        <Routes>
+          <Route path='/' element={<Berlangsung celengans={celengans} setCelengans={setCelengans} />} />
+          <Route path='/tercapai' element={<Selesai celengans={celengans} />} />
+          <Route path='/tambah' element={<Tambah celengans={celengans} setCelengans={setCelengans} />} />
+          <Route path='/celenganku/:id' element={<Celengan celengans={celengans} setCelengans={setCelengans} />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
