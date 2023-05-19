@@ -15,7 +15,7 @@ const Berlangsung = ({ celengans, setCelengans }) => {
     return (
         <>
             <Navbar />
-            <div>
+            <div className='flex flex-col justify-center items-center'>
                 <button className='rounded-md p-2 bg-slate-500 m-4' onClick={handleOnclick}>
                     Tambah
                 </button>
