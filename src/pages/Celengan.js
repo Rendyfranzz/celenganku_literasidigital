@@ -68,11 +68,10 @@ const Celengan = ({ celengans, setCelengans }) => {
   return (
     <>
       <div className='flex justify-center flex-col items-center text-gray-200 p-4'>
-        <div className='flex flex-row justify-between w-full'>
+        <div className='flex flex-row justify-between w-full mb-4'>
           <button onClick={e => navigate(-1)}>Back</button>
           <button onClick={e => handleDelete(data.id, celengans)}>Delete</button>
         </div>
-
         <Card key={data.id} data={data} />
         <div className='flex text-left '>
           <div>
@@ -166,7 +165,7 @@ const Celengan = ({ celengans, setCelengans }) => {
           </table>
         </div>
 
-        <button onClick={openModal}>add</button>
+        <button className='rounded-md shadow-md' onClick={openModal}>Tambah</button>
 
         <Transition appear show={isOpen} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -206,17 +205,16 @@ const Celengan = ({ celengans, setCelengans }) => {
                           <p>Jumlah</p>
                           <input onChange={(e) => setJumlah(e.target.value)} name='target' type='number' placeholder='Target Tabungan' required />
                         </div>
-                        <input type='submit' />
                       </form>
                     </div>
 
                     <div className="mt-4">
                       <button
-                        type="button"
+                        type="submit"
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                        onClick={closeModal}
+                        
                       >
-                        Got it, thanks!
+                        submit
                       </button>
                     </div>
                   </Dialog.Panel>
