@@ -54,7 +54,6 @@ const Celengan = ({ celengans, setCelengans }) => {
     todoTarget.progres = parseInt(todoTarget.terkumpul).toFixed() / parseInt(todoTarget.target).toFixed() * 100
     todoTarget.estimate = parseInt(todoTarget.kurang / todoTarget.nominal)
     todoTarget.data.push(temp)
-    console.log(todoTarget);
     setData(todoTarget)
     setCelengans([...celengans], celengans)
     closeModal()
