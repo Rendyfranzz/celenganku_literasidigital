@@ -16,10 +16,10 @@ const Berlangsung = ({ celengans, setCelengans }) => {
         <>
             <Navbar />
             <div>
-                <button onClick={handleOnclick}>
-                    sasa
+                <button className='rounded-md p-2 bg-slate-500 m-4' onClick={handleOnclick}>
+                    Tambah
                 </button>
-                <div className='w-full flex flex-col justify-center items-center'>
+                <div className='w-full flex flex-col justify-center items-center space-y-4'>
                     {
                         filtered ? filtered.map((data) => {
                             return <Card key={data.nama} data={data} />

@@ -36,13 +36,17 @@ const Celengan = ({ celengans, setCelengans }) => {
     const todoTarget = FindTodo(parseInt(id), celengans);
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    if(parseInt(todoTarget.kurang) < parseInt(jumlah)){
+      alert("Nominal tidak boleh melebihi kurang")
+    }
     let temp = {
       tanggal: time,
       jumlah: jumlah
     }
     todoTarget.terkumpul = parseInt(todoTarget.terkumpul) + parseInt(jumlah)
-    if (parseInt(todoTarget.terkumpul) >= parseInt(todoTarget.target)) {
+    if (parseInt(todoTarget.terkumpul) == parseInt(todoTarget.target)) {
       todoTarget.selesai = true
+      alert("yayy terkumpul")
       navigate("/tercapai")
     }
     todoTarget.kurang = todoTarget.target - todoTarget.terkumpul
