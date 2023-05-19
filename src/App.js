@@ -16,8 +16,18 @@ function App() {
   }
   const [celengans, setCelengans] = useState(getCelengan())
   useEffect(() => {
-    localStorage.setItem("celenganku", JSON.stringify(celengans))
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      localStorage.setItem("celenganku", JSON.stringify(celengans))
+     }
+     else{
+      alert("Harap Menggunakan Hp untuk Pengalaman yang lebih baik")
+      return
+     }
+     
+   
   }, [celengans])
+
+  
   return (
     <div className="bg-gray-800 min-h-screen">
       <Router>
